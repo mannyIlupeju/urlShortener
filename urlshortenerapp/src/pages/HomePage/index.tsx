@@ -1,4 +1,4 @@
-import React, {FormEvent, useState} from 'react';
+import React, { useState} from 'react';
 import { useRouter } from 'next/router'
 import {useGlobalContext} from '../../context/context'
 
@@ -12,6 +12,7 @@ const HomePage = () => {
     const {setShortenedUrl, setIsLoading} = useGlobalContext()
 
     async function submitUrl() {
+        console.log(inputUrl)
         setIsLoading(true)
         
         const response = await fetch('/api/url-short', {
