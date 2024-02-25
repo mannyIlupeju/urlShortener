@@ -1,8 +1,13 @@
 import Head from 'next/head'
 import HomePage from './HomePage'
 import Footer from '@/components/Footer'
+import Navigation from '@/components/Navigation';
+import Login from '@/components/Authentication/Login';
+import Register from '@/components/Authentication/Register';
+import { useGlobalContext } from '@/context/context';
 
 export default function Home() {
+  const {isLoggedIn, isRegistered} = useGlobalContext();
   return (
     <>
     <Head>
@@ -12,9 +17,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <main className="text-center mainBackground">
+    <main className="container mx-auto">
+      <Navigation/>
       <HomePage/>
+      {isLoggedIn && <Login/>}
+      {isRegistered && <Register/>}
+     
+   
     </main>
+    
     <Footer/>
     </>
   )
