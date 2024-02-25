@@ -21,9 +21,11 @@ type GlobalContextType = {
     shortenedUrl: string | null;
     userData: UserData
     setUserData: SetStateType<UserData>
-    isLogin: boolean
+    isLoggedIn: boolean
+    isRegistered: boolean
     checkUserData: userLoginData
     setCheckUserData:SetStateType<userLoginData>
+    setIsRegistered:(register:boolean)=>void
     setIsLogin:(login:boolean)=> void
     setIsLoading: (loadingData:boolean) => void;
     setShortenedUrl: (url:string | null) => void
@@ -57,8 +59,8 @@ const AppContext = ({children}: LoadingContextProviderProps) => {
  const [isLoading, setIsLoading] = useState<boolean>(false)
  const [userData, setUserData] = useState<UserData>({name: '', email: '', password: '', retype: ''})
  const [checkUserData, setCheckUserData] = useState<userLoginData>({email: '', password: ''});
- const [isLogin, setIsLogin] = useState<boolean>(false)
-
+ const [isLoggedIn, setIsLogin] = useState<boolean>(false)
+ const[isRegistered, setIsRegistered] = useState<boolean>(false)
 
 
  const ctx:GlobalContextType = {
@@ -68,8 +70,10 @@ const AppContext = ({children}: LoadingContextProviderProps) => {
     shortenedUrl,
     userData,
     setUserData,
-    isLogin,
+    isLoggedIn,
     setIsLogin,
+    isRegistered,
+    setIsRegistered,
     checkUserData,
     setCheckUserData
  }

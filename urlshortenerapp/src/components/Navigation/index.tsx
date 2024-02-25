@@ -3,15 +3,16 @@ import Link from 'next/link'
 import { useGlobalContext } from '@/context/context'
 
 function Navigation() {
-  const {isLogin, setIsLogin} = useGlobalContext()
+  const {isLoggedIn, setIsLogin, isRegistered, setIsRegistered} = useGlobalContext()
    
   function toggleLoginModal(){
     console.log('login modal opened')
-    setIsLogin(!isLogin)
+    setIsLogin(!isLoggedIn)
   }
 
   function toggleRegisterModal(){
     console.log('register modal opened')
+    setIsRegistered(!isRegistered)
   }
 
   return (

@@ -5,16 +5,21 @@ import { useGlobalContext } from '@/context/context'
 
 
 function Login() {
- const {checkUserData, setCheckUserData} = useGlobalContext()
+ const {checkUserData, setCheckUserData, isLoggedIn, setIsLogin} = useGlobalContext()
 
   function handleLogin() {
     console.log('user trying to login', checkUserData)
+  }
+
+  function toggleLoginModal(){
+    console.log('Login Modal clicked')
+    setIsLogin(!isLoggedIn)
   }
  
   
 
   return (
-    <Form onSubmit={handleLogin} formType="Login">
+    <Form onSubmit={handleLogin} formType="Login" onAction={toggleLoginModal}>
       <InputComponent
         type='email'
         id='email'

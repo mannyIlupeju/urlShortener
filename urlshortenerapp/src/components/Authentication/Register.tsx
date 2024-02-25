@@ -13,7 +13,7 @@ import { useGlobalContext } from '@/context/context'
 // }
 
 export default function Register() {
-  const {userData, setUserData} = useGlobalContext();
+  const {userData, setUserData, isRegistered, setIsRegistered} = useGlobalContext();
 
   const handleSubmit = async() => {
     console.log(userData)
@@ -29,12 +29,15 @@ export default function Register() {
      console.log(data)
   }
   
-
+  function toggleRegisterModal(){
+    console.log('register modal')
+    setIsRegistered(!isRegistered)
+  }
 
 
 
   return (
-    <Form onSubmit={handleSubmit} formType="Register">
+    <Form onSubmit={handleSubmit} onAction={toggleRegisterModal} formType="Register">
       <InputComponent
         type='text'
         id='name'
