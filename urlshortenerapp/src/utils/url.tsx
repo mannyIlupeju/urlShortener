@@ -8,7 +8,6 @@ dotenv.config();
 
 let cachedDb:Db | null = null;
 
-dotenv.config()
 
 
 

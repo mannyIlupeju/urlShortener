@@ -1,6 +1,9 @@
 import Head from 'next/head'
 import HomePage from './HomePage'
 import Footer from '@/components/Footer'
+import Navigation from '@/components/Navigation';
+import Login from '@/components/Authentication/Login';
+import Register from '@/components/Authentication/Register';
 
 export default function Home() {
   return (
@@ -12,9 +15,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <main className="text-center mainBackground">
+    <main className="container mx-auto">
+      <Navigation/>
       <HomePage/>
+      <Register/>
+     
+   
     </main>
+    
     <Footer/>
     </>
   )

@@ -4,6 +4,7 @@ import {useGlobalContext} from '../../context/context'
 
 
 
+
 const HomePage = () => {
     const [inputUrl, setInputUrl] = useState({url: ''})
     const [shortUrl, setShortUrl] = useState('')
@@ -50,11 +51,10 @@ const HomePage = () => {
 
 
 return (
-    <div className="h-screen">
-        <section className="container mx-auto ">
-            <h1 className="text-3xl md:text-4xl p-4 font-bold text-green-400 text-center">Shorten-Link</h1>
+    <main>
+        <section className="container mx-auto mb-4">
             <div className="my-4 md:my-4">
-                <div className="mx-auto p-4 md:p-12 gap-10 justify-center mb-12 w-full lg:w-1/2 background translate-y-50">
+                <div className="mx-auto gap-10 justify-center w-full lg:w-1/2 background translate-y-50">
                     <h2 className="text-xl md:text-2xl font-semibold text-center">Paste the website url to be shortened</h2>
                     <div className="mt-4 md:mt-4">
                         <div className="flex gap-1 flex-col 2xl:flex-row items-center justify-center">
@@ -84,10 +84,10 @@ return (
             </div>
         </section>
 
-        <section className="container mx-auto mb-12">
+        <section className="flex flex-col justify-center text-center mb-8">
             <h2 className="text-3xl font-bold text-green-400">Simple and Fast URL Shortener</h2>  
             <div className="flex justify-center mt-2">
-                <p className="text-center w-1/2">ShortURL allows to shorten long links from Instagram, Facebook, YouTube, Twitter, Linked In, WhatsApp, TikTok, blogs and sites.
+                <p className="text-center md:w-1/2">ShortURL allows to shorten long links from Instagram, Facebook, YouTube, Twitter, Linked In, WhatsApp, TikTok, blogs and sites.
                     Just paste the long URL and click the Shorten URL button. On the next page, copy the shortened URL and share it on sites, chat and emails.
                     After shortening the URL, check how many clicks it received.
                 </p>
@@ -96,18 +96,19 @@ return (
 
   
 
-        <section className="container mx-auto my-8 w-fit ">
+        <section className="flex flex-col justify-center text-center mb-12">
             <h2 className="text-2xl font-bold text-green-400">Want More? Try Our Premium Features!</h2>       
             <p>Create an Account and get access to Custom Short Links, Detailed Analytics and Support</p>          
             <div className="mt-4">
-                <button className="bg-green-400 mt-2 md:mt-0 md:ml-2 p-5 w-fit md:w-auto rounded-xl text-zinc-800">Create Account</button>
+                <button className="bg-green-400 mt-2 md:mt-0 md:ml-2 p-3 w-fit md:w-auto rounded-xl text-zinc-800">
+                    Create Account
+                </button>
             </div>        
         </section>
     
-    </div>
+    </main>
 
-
-    );
+    )
 }
 
 export default HomePage;
