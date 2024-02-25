@@ -9,7 +9,7 @@ const connectDB = async(): Promise<void> => {
     }
 
     try {
-        await mongoose.connect(getEnvVariable('NEXT_MONGDOB_URI'))
+        await mongoose.connect(getEnvVariable('NEXT_MONGODB_URI'))
         console.log('Connected to MongoDB')
     } catch(err) {
             console.error('Connection error', err)

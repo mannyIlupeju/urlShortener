@@ -24,7 +24,7 @@ async function handler(req:NextApiRequest, res:NextApiResponse){
        }
 
        const userEmail = email.toLowerCase().trim();
-       if(userEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userEmail)){
+       if(userEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userEmail)){
          return res.status(422).json({ message: 'Please enter a correct email address' });
        }
 

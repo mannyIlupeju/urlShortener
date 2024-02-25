@@ -8,7 +8,7 @@ function Login() {
  const {checkUserData, setCheckUserData} = useGlobalContext()
 
   function handleLogin() {
-    
+    console.log('user trying to login', checkUserData)
   }
  
   

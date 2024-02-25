@@ -18,7 +18,7 @@ export default function Home() {
     <main className="container mx-auto">
       <Navigation/>
       <HomePage/>
-      <Register/>
+      <Login/>
      
    
     </main>

@@ -27,6 +27,9 @@ function Form({onSubmit, children, formType, ...props}:FormProps) {
             <div className="relative bottom-3 left-72">
               <FaTimes size="1.4rem" className="cursor-pointer text-yellow-800" />
             </div>
+           <div className="flex justify-center text-xl">
+            {formType}
+           </div>
             {children}
             <div className="flex justify-center mt-8 cursor-pointer">
             <Button 
