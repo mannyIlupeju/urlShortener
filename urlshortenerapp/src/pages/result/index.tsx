@@ -1,11 +1,11 @@
 // pages/result.js
 
 import { useState, useEffect, FormEvent } from 'react';
-import { useGlobalContext } from '../context/context'
+import { useGlobalContext } from '../../context/context'
 import { useRouter } from 'next/router'
-import Footer from '../components/Footer'
-import Loading from '../components/Loader/Loading'
-import Button from '../components/Button/Button'
+import Footer from '../../components/Footer'
+import Loading from '../../components/Loader/Loading'
+import Button from '../../components/Button/Button'
 
 interface InputUrlState {
     url: string;

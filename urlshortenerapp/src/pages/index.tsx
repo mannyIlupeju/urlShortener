@@ -22,10 +22,7 @@ export default function Home() {
       <HomePage/>
       {isLoggedIn && <Login/>}
       {isRegistered && <Register/>}
-     
-   
     </main>
-    
     <Footer/>
     </>
   )
