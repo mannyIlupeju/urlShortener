@@ -20,12 +20,12 @@ async function handler(req:NextApiRequest, res:NextApiResponse<ErrorResponse | S
         try{
             if (await validateUrl(url) === false) {
                 return res.status(403).send({message: 'Please enter a valid Url'})
-            } 
-            //Create a slug and insert it into the database along with the url
-            const slug = nanoid(7)
-            await insertURL({ url, slug });
-    
-            res.status(200).json({ slug, message: 'Processing...' })
+            } else {
+                //Create a slug and insert it into the database along with the url
+                const slug = nanoid(7)
+                await insertURL({ url, slug });
+                res.status(200).json({ slug, message: 'Processing...' })
+            }
         } catch(error){
             console.log(error);
             res.status(500).json({message: 'Internal Server Error'})

@@ -13,20 +13,20 @@ let cachedDb:Db | null = null;
 connectDB();
 
 
-async function connectToDatabase(uri:string):Promise<Db> {
-    if (cachedDb) return cachedDb;
-    try{
-       const client = await MongoClient.connect(uri);
-       const dbName = new URL(uri).pathname.substring(1)
-       const db = client.db(dbName)
-       cachedDb = db; 
-       return db;
+// async function connectToDatabase(uri:string):Promise<Db> {
+//     if (cachedDb) return cachedDb;
+//     try{
+//        const client = await MongoClient.connect(uri);
+//        const dbName = new URL(uri).pathname.substring(1)
+//        const db = client.db(dbName)
+//        cachedDb = db; 
+//        return db;
 
-    } catch(error){
-        console.log('MongoDB connection error:')
-        throw new Error('Failed to connect to database');
-    }
-}
+//     } catch(error){
+//         console.log('MongoDB connection error:')
+//         throw new Error('Failed to connect to database');
+//     }
+// }
 
 
 

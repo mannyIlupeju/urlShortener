@@ -7,7 +7,6 @@ import {useGlobalContext} from '../../context/context'
 
 const HomePage = () => {
     const [inputUrl, setInputUrl] = useState({url: ''})
-    const [shortUrl, setShortUrl] = useState('')
     const [message, setMessage] = useState('')
     const router = useRouter();
     const {setShortenedUrl, setIsLoading, isRegistered, setIsRegistered} = useGlobalContext()
@@ -27,6 +26,7 @@ const HomePage = () => {
         let data; 
         try{
          data = await response.json(); 
+         console.log(data)
          setMessage(data.message)  
         } catch(error){
             console.error("Failed to parse response as JSON", error);
@@ -57,7 +57,7 @@ const HomePage = () => {
     console.log('register modal')
     setIsRegistered(!isRegistered)
   }
-  
+
 
 
 return (
