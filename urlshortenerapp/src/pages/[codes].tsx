@@ -1,11 +1,11 @@
 import { getURL } from "@/utils/url";
-import { GetServerSideProps } from "next";
 
-// export default function WebRedirect(){
-//     return <div>
-//         Redirecting...
-//     </div>>
-// }
+
+export default function WebRedirect(){
+    return <div>
+        Redirecting...
+    </div>
+}
 
 export const getServerSideProps = async(context:any) => {
     console.log("Context:", context)
