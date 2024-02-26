@@ -33,6 +33,7 @@ async function connectToDatabase(uri:string):Promise<Db> {
 export async function insertURL(urlObject: {
     url:string;
     slug:string;
+    shortUrl?:string;
     userId?: string
 }){
     try {
@@ -50,9 +51,8 @@ export async function insertURL(urlObject: {
 export async function getURL(slug:string){
     try{
         await connectDB();
-        const result = await Url.findOne({slug: slug})
-        return result 
-
+        const result = await Url.findOne({slug: slug});
+        return result;
     } catch (error){
         console.error('Error fetching Url:', error);
         throw new Error("Failed to fetch URL from the database");

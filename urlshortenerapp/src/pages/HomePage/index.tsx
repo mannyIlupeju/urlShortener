@@ -16,7 +16,7 @@ const HomePage = () => {
         console.log(inputUrl)
         setIsLoading(true)
         
-        const response = await fetch('/api/url-short', {
+        const response = await fetch('/api/urlShort/url-short', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

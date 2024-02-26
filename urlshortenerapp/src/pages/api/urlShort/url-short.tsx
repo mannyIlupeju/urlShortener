@@ -1,7 +1,7 @@
 import {NextApiRequest, NextApiResponse} from 'next'
 import { nanoid } from 'nanoid';
-import { insertURL } from '../../utils/url';
-import {validateUrl} from '../../utils/validateUrl'
+import { insertURL } from '../../../utils/url';
+import {validateUrl} from '../../../utils/validateUrl'
 
 type ErrorResponse = {
     message: string;
@@ -15,6 +15,7 @@ type SuccessResponse = {
 async function handler(req:NextApiRequest, res:NextApiResponse<ErrorResponse | SuccessResponse>) {
     if (req.method === "POST") {
         const { url } = req.body
+        
 
         try{
             if (await validateUrl(url) === false) {

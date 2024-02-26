@@ -25,6 +25,7 @@ type GlobalContextType = {
     isRegistered: boolean
     checkUserData: userLoginData
     setCheckUserData:SetStateType<userLoginData>
+    urlShortenerValue: string
     setIsRegistered:(register:boolean)=>void
     setIsLogin:(login:boolean)=> void
     setIsLoading: (loadingData:boolean) => void;
@@ -61,9 +62,12 @@ const AppContext = ({children}: LoadingContextProviderProps) => {
  const [checkUserData, setCheckUserData] = useState<userLoginData>({email: '', password: ''});
  const [isLoggedIn, setIsLogin] = useState<boolean>(false)
  const[isRegistered, setIsRegistered] = useState<boolean>(false)
+//urlShortener value edit - shortener.bio not authentic yet
 
+ const urlShortenerValue = `https://shortener.bio/${shortenedUrl}`
 
  const ctx:GlobalContextType = {
+    urlShortenerValue,
     setShortenedUrl,
     isLoading,
     setIsLoading,
