@@ -12,7 +12,6 @@ const HomePage = () => {
     const {setShortenedUrl, setIsLoading, isRegistered, setIsRegistered} = useGlobalContext()
 
     async function submitUrl() {
-        
         let data; 
         setIsLoading(true)
         
@@ -61,8 +60,8 @@ const HomePage = () => {
 
 
 return (
-    <main>
-        <section className="container mx-auto mb-4">
+    <main className="h-screen">
+        <section className="container mx-auto my-8">
             <div className="my-4 md:my-4">
                 <div className="mx-auto gap-10 justify-center w-full lg:w-1/2 background translate-y-50">
                     <h2 className="text-xl md:text-2xl font-semibold text-center">Paste the website url to be shortened</h2>
@@ -94,7 +93,7 @@ return (
             </div>
         </section>
 
-        <section className="flex flex-col justify-center text-center mb-8">
+        <section className="flex flex-col justify-center text-center my-12">
             <h2 className="text-3xl font-bold text-green-400">Simple and Fast URL Shortener</h2>  
             <div className="flex justify-center mt-2">
                 <p className="text-center md:w-1/2">ShortURL allows to shorten long links from Instagram, Facebook, YouTube, Twitter, Linked In, WhatsApp, TikTok, blogs and sites.
@@ -106,7 +105,7 @@ return (
 
   
 
-        <section className="flex flex-col justify-center text-center mb-12">
+        <section className="flex flex-col justify-center text-center my-12">
             <h2 className="text-2xl font-bold text-green-400">Want More? Try Our Premium Features!</h2>       
             <p>Create an Account and get access to Custom Short Links, Detailed Analytics and Support</p>          
             <div className="mt-4">

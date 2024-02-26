@@ -114,11 +114,11 @@ const ResultPage = () => {
                             }
                         <div>
                          <div className="flex md:flex-row flex-col justify-center gap-4">
-                            <Button 
+                            {/* <Button 
                             variant="contained"
                             onClick={handleTotalClicks}>
                                 Total of clicks of your short URL
-                            </Button>
+                            </Button> */}
                             <Button     
                             variant="contained" 
                             className="mt-4 md:mt-0 md:ml-2 p-4 w-fit rounded-xl md:w-auto" 
