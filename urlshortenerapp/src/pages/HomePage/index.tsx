@@ -10,10 +10,10 @@ const HomePage = () => {
     const [shortUrl, setShortUrl] = useState('')
     const [message, setMessage] = useState('')
     const router = useRouter();
-    const {setShortenedUrl, setIsLoading} = useGlobalContext()
+    const {setShortenedUrl, setIsLoading, isRegistered, setIsRegistered} = useGlobalContext()
 
     async function submitUrl() {
-        console.log(inputUrl)
+       
         setIsLoading(true)
         
         const response = await fetch('/api/urlShort/url-short', {
@@ -21,13 +21,18 @@ const HomePage = () => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(inputUrl)
+            body: JSON.stringify({url: inputUrl})
         })
 
-        const data = await response.json(); 
-        console.log(data)
-
-        setMessage(data.message)  
+        let data; 
+        try{
+         data = await response.json(); 
+         setMessage(data.message)  
+        } catch(error){
+            console.error("Failed to parse response as JSON", error);
+            setIsLoading(false);
+            return
+        }
 
         setInterval(() => {
             setMessage('')   
@@ -48,6 +53,11 @@ const HomePage = () => {
 
     }
 
+    function toggleRegisterModal(){
+    console.log('register modal')
+    setIsRegistered(!isRegistered)
+  }
+  
 
 
 return (
@@ -100,7 +110,10 @@ return (
             <h2 className="text-2xl font-bold text-green-400">Want More? Try Our Premium Features!</h2>       
             <p>Create an Account and get access to Custom Short Links, Detailed Analytics and Support</p>          
             <div className="mt-4">
-                <button className="bg-green-400 mt-2 md:mt-0 md:ml-2 p-3 w-fit md:w-auto rounded-xl text-zinc-800">
+                <button 
+                className="bg-green-400 mt-2 md:mt-0 md:ml-2 p-3 w-fit md:w-auto rounded-xl text-zinc-800"
+                onClick={toggleRegisterModal}
+                >
                     Create Account
                 </button>
             </div>        

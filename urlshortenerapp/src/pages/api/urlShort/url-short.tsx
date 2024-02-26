@@ -14,7 +14,7 @@ type SuccessResponse = {
 
 async function handler(req:NextApiRequest, res:NextApiResponse<ErrorResponse | SuccessResponse>) {
     if (req.method === "POST") {
-        const { url } = req.body
+        const {url} = req.body.url
         
 
         try{
