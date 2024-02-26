@@ -19,7 +19,7 @@ async function handler(req:NextApiRequest, res:NextApiResponse<ErrorResponse | S
 
         try{
             if (await validateUrl(url) === false) {
-                return res.status(403).send({message: 'Please enter a valid Url'})
+                return res.status(400).send({message: 'Please enter a valid Url'})
             } else {
                 //Create a slug and insert it into the database along with the url
                 const slug = nanoid(7)

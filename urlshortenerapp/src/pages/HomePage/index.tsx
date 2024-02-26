@@ -11,57 +11,63 @@ const HomePage = () => {
     const router = useRouter();
     const {setShortenedUrl, setIsLoading, isRegistered, setIsRegistered} = useGlobalContext()
 
-    async function submitUrl() {
-        let data; 
-        setIsLoading(true)
-        
-        const response = await fetch('/api/urlShort/url-short', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({url:inputUrl})
-        })
+        async function submitUrl() {
+            setIsLoading(true);
 
-        
-        try{
-         data = await response.json(); 
-         setMessage(data.message)  
-        } catch(error){
-            console.error("Failed to parse response as JSON", error);
-            setIsLoading(false);
-            return
-        }
+            try {
+                const response = await fetch('/api/urlShort/url-short', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ url: inputUrl })
+                });
 
-        setInterval(() => {
-            setMessage('')   
-        }, 3000);
-        
-        if(response.status === 200)
-        {
-            setShortenedUrl(data.slug)
-            router.push('/result').then(() => {
+                // Check if the response was not ok (e.g., status code 4xx or 5xx)
+                if (!response.ok) {
+                    console.error('Server error:', response.statusText);
+                    // Optionally set an error message for the user
+                    setMessage('An error occurred. Please try again.');
+                    return; // Exit the function early
+                }
+
+                const data = await response.json();
+
+                // Handle successful response
+                if (response.status === 200) {
+                    setShortenedUrl(data.slug);
+                    setMessage(data.message);
+                    // Navigate to the result page
+                    await router.push('/result');
+                } else {
+                    // Handle other successful responses that are not 200 OK
+                    console.log('Error: ', data.message);
+                    setMessage(data.message);
+                }
+            } catch (error) {
+                console.error("Failed to submit URL:", error);
+                setMessage('Failed to process the request.');
+            } finally {
+                // Clear message after 3 seconds
                 setTimeout(() => {
-                    setIsLoading(false);
+                    setMessage('');
                 }, 3000);
-            })    
-            
-        } else {
-            console.log('Error: ', data.message)
-        }
 
-    }
+                // Ensure isLoading is set to false when the operation is complete
+                setIsLoading(false);
+            }
+        }
 
     function toggleRegisterModal(){
-    console.log('register modal')
-    setIsRegistered(!isRegistered)
-  }
+        console.log('register modal')
+        setIsRegistered(!isRegistered)
+    }
 
 
 
 return (
     <main className="h-screen">
-        <section className="container mx-auto my-8">
+        <section className="container mx-auto my-4">
             <div className="my-4 md:my-4">
                 <div className="mx-auto gap-10 justify-center w-full lg:w-1/2 background translate-y-50">
                     <h2 className="text-xl md:text-2xl font-semibold text-center">Paste the website url to be shortened</h2>
