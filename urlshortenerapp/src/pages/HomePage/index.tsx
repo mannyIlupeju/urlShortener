@@ -12,7 +12,8 @@ const HomePage = () => {
     const {setShortenedUrl, setIsLoading, isRegistered, setIsRegistered} = useGlobalContext()
 
     async function submitUrl() {
-       
+        
+        let data; 
         setIsLoading(true)
         
         const response = await fetch('/api/urlShort/url-short', {
@@ -20,13 +21,12 @@ const HomePage = () => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({url: inputUrl})
+            body: JSON.stringify({url:inputUrl})
         })
 
-        let data; 
+        
         try{
          data = await response.json(); 
-         console.log(data)
          setMessage(data.message)  
         } catch(error){
             console.error("Failed to parse response as JSON", error);
