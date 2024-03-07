@@ -23,24 +23,22 @@ const HomePage = () => {
                     body: JSON.stringify({ url: inputUrl })
                 });
 
-                // Check if the response was not ok (e.g., status code 4xx or 5xx)
                 if (!response.ok) {
                     console.error('Server error:', response.statusText);
-                    // Optionally set an error message for the user
+                  
                     setMessage('An error occurred. Please try again.');
-                    return; // Exit the function early
+                    return; 
                 }
 
                 const data = await response.json();
 
-                // Handle successful response
+            
                 if (response.status === 200) {
                     setShortenedUrl(data.slug);
                     setMessage(data.message);
-                    // Navigate to the result page
+                    
                     await router.push('/result');
                 } else {
-                    // Handle other successful responses that are not 200 OK
                     console.log('Error: ', data.message);
                     setMessage(data.message);
                 }
@@ -48,12 +46,10 @@ const HomePage = () => {
                 console.error("Failed to submit URL:", error);
                 setMessage('Failed to process the request.');
             } finally {
-                // Clear message after 3 seconds
                 setTimeout(() => {
                     setMessage('');
                 }, 3000);
 
-                // Ensure isLoading is set to false when the operation is complete
                 setIsLoading(false);
             }
         }
@@ -66,13 +62,13 @@ const HomePage = () => {
 
 
 return (
-    <main className="h-screen">
-        <section className="container mx-auto my-4">
+    <main className="container mx-auto h-screen">
+        <section className=" mt-24">
             <div className="my-4 md:my-4">
                 <div className="mx-auto gap-10 justify-center w-full lg:w-1/2 background translate-y-50">
                     <h2 className="text-xl md:text-2xl font-semibold text-center">Paste the website url to be shortened</h2>
                     <div className="mt-4 md:mt-4">
-                        <div className="flex gap-1 flex-col 2xl:flex-row items-center justify-center">
+                        <div className="flex gap-1 flex-col 2xl:flex-row items-center justify-center p-2">
                             <input 
                                 type="url" 
                                 id="url" 

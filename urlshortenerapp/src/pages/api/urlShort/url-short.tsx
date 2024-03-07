@@ -15,8 +15,6 @@ type SuccessResponse = {
 async function handler(req:NextApiRequest, res:NextApiResponse<ErrorResponse | SuccessResponse>) {
     if (req.method === "POST") {
         const {url} = req.body.url
-        
-
         try{
             if (await validateUrl(url) === false) {
                 return res.status(400).send({message: 'Please enter a valid Url'})
@@ -30,7 +28,6 @@ async function handler(req:NextApiRequest, res:NextApiResponse<ErrorResponse | S
             console.log(error);
             res.status(500).json({message: 'Internal Server Error'})
         }
-
     } else {
         res.status(405).json({message: 'Method not allowed'})
     }
