@@ -30,9 +30,7 @@ const HomePage = () => {
                     return; 
                 }
 
-                const data = await response.json();
-
-            
+                const data = await response.json();            
                 if (response.status === 200) {
                     setShortenedUrl(data.slug);
                     setMessage(data.message);

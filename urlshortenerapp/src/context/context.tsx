@@ -64,7 +64,7 @@ const AppContext = ({children}: LoadingContextProviderProps) => {
  const[isRegistered, setIsRegistered] = useState<boolean>(false)
 //urlShortener value edit - shortener.bio not authentic yet
 
- const urlShortenerValue = `https://shortener.bio/${shortenedUrl}`
+ const urlShortenerValue = `https://url-shortener-ten-lake.vercel.app//${shortenedUrl}`
 
  const ctx:GlobalContextType = {
     urlShortenerValue,
