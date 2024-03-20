@@ -64,7 +64,7 @@ const AppContext = ({children}: LoadingContextProviderProps) => {
  const[isRegistered, setIsRegistered] = useState<boolean>(false)
 //urlShortener value edit - shortener.bio not authentic yet
 
- const urlShortenerValue = `https://urlshortener-cyan.vercel.app//${shortenedUrl}`
+ const urlShortenerValue = `localhost:3000/${shortenedUrl}`
 
  const ctx:GlobalContextType = {
     urlShortenerValue,

@@ -12,14 +12,13 @@ type SuccessResponse = {
     message: string;
 }
 
-async function handler(req:NextApiRequest, res:NextApiResponse<ErrorResponse | SuccessResponse>) {
+async function handler(req:NextApiRequest, res:NextApiResponse<ErrorResponse|SuccessResponse>) {
     if (req.method === "POST") {
         const {url} = req.body.url
         try{
             if(await validateUrl(url) === false) {
                 return res.status(400).send({message: 'Please enter a valid Url'})
             } else{
-                //Create a slug and insert it into the database along with the url
                 const slug = nanoid(7)
                 await insertURL({ url, slug });
                 res.status(200).json({ slug, message: 'Processing...' })

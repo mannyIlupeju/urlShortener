@@ -62,7 +62,7 @@ const ResultPage = () => {
     }
 
 
-     function handleLinkedInShare(){
+    function handleLinkedInShare(){
         const urlToShare = urlShortenerValue;
         const LinkedInIntentUrl = `https://www.linkedin.com/shareArticle?url=${encodeURIComponent(urlToShare)}`
 

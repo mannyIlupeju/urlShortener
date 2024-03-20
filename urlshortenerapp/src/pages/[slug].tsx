@@ -11,8 +11,7 @@ export default function WebRedirect(){
 
 export const getServerSideProps:GetServerSideProps = async (context) => {
   const fetchedSlug = context.params?.slug as string | undefined;
- // Assume this function queries the database
-
+  console.log(fetchedSlug)
   if (!fetchedSlug) {
    return {notFound: true};
   }
@@ -29,10 +28,6 @@ export const getServerSideProps:GetServerSideProps = async (context) => {
   } else {
     return {notFound: true}
   }
-
-
- 
-  
 };
 
 
