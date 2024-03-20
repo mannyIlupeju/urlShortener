@@ -12,6 +12,10 @@ interface UserData {
   retype: string;
 }
 
+type envVariable = {
+    name: string;
+
+}
 
 
 type SetStateType<T> = React.Dispatch<React.SetStateAction<T>>;
@@ -38,6 +42,10 @@ interface userLoginData {
     password: string
 }
 
+interface processENV {
+    NEXT_PUBLIC_PRODUCTION_URL: string;
+}
+
 
 const GlobalContext = createContext<GlobalContextType | null >(null)
 
@@ -52,6 +60,11 @@ export function useGlobalContext(){
 } 
 
 
+const domainUrl = process.env.PRODUCTION_URL || 'localhost:3000'
+
+if (!process.env.PRODUCTION_URL) {
+ console.log('production_url not defined')
+}
 
 
 
@@ -64,7 +77,7 @@ const AppContext = ({children}: LoadingContextProviderProps) => {
  const[isRegistered, setIsRegistered] = useState<boolean>(false)
 //urlShortener value edit - shortener.bio not authentic yet
 
- const urlShortenerValue = `localhost:3000/${shortenedUrl}`
+ const urlShortenerValue = `${domainUrl}/${shortenedUrl}`
 
  const ctx:GlobalContextType = {
     urlShortenerValue,
